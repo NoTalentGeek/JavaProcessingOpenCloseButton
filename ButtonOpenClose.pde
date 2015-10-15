@@ -3,6 +3,9 @@ This button will be used to open a panel made using
     P5 user interface.*/
 public class ButtonOpenClose{
 
+    boolean isButtonOpenBoolean         = true;
+    boolean isAnimating                 = false;
+    int     buttonRotationCounterInt    = 0;
     int     buttonSizeInt               = -1;   /*The size of this button.*/
     int     buttonXInt                  = -1;   /*The x position of this button.*/
     int     buttonYInt                  = -1;   /*The y position of this button.*/
@@ -63,15 +66,27 @@ public class ButtonOpenClose{
     }
 
     /*A function to draw the combined shape.*/
-    void DrawVoid                       (int _buttonXInt, int _buttonYInt){
+    void DrawVoid                           (int _buttonXInt, int _buttonYInt){
 
-        buttonXInt                      = _buttonXInt + (buttonSizeInt/2);
-        buttonYInt                      = _buttonYInt + (buttonSizeInt/2);
-        shape                           (buttonOpenCloseObject, buttonXInt, buttonYInt);
+        buttonXInt                          = _buttonXInt + (buttonSizeInt/2);
+        buttonYInt                          = _buttonYInt + (buttonSizeInt/2);
+        shape                               (buttonOpenCloseObject, buttonXInt, buttonYInt);
 
-        /*TESTING.*/
-        //buttonOpenCloseObject         .rotate(0.1f);
-        MouseOverBoolean              ();
+        if(isAnimating == true)             {
+
+            buttonOpenCloseObject           .rotate(radians(1));
+            buttonRotationCounterInt        ++;
+
+            println                         (buttonRotationCounterInt);
+
+            if(buttonRotationCounterInt     >= 45){
+
+                buttonRotationCounterInt    = 0;
+                isAnimating                 = false;
+
+            }
+
+        }
 
     }
 
@@ -88,19 +103,12 @@ public class ButtonOpenClose{
 
         ){ hoverBoolean                 = true; }
 
-        /*
-        print   ((buttonXInt - (buttonSizeInt/2) - (buttonSizeInt/2)) + " ");
-        print   ((buttonYInt - (buttonSizeInt/2) - (buttonSizeInt/2)) + " ");
-        print   ((buttonXInt - (buttonSizeInt/2) + (buttonSizeInt/2)) + " ");
-        println ((buttonYInt - (buttonSizeInt/2) + (buttonSizeInt/2)));
-        */
-
-        println (hoverBoolean);
         return  hoverBoolean;
 
     } 
 
 };
+
 
 
 
