@@ -55,12 +55,8 @@ void draw(){
 
     background                  (240);
 
-    /*Set the shape mode to CENTER because we want this object to rotate
-        around the center.*/
-    shapeMode                   (CENTER);
-    /*Draw the shape.*/
-    shape                       (buttonOpenCloseObject, width/2 + 15, height/2 + 15);
-    /*Prototype rotation.*/
-    buttonOpenCloseObject       .rotate(0.1);
+    shapeMode                   (CENTER);                                               /*Set the shape mode to CENTER because we want this object to rotate around the center.*/
+    shape                       (buttonOpenCloseObject, width/2 + 15, height/2 + 15);   /*Draw the shape.*/
+    buttonOpenCloseObject       .rotate(0.1);                                           /*Prototype rotation.*/
 
 }
