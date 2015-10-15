@@ -74,15 +74,17 @@ public class ButtonOpenClose{
 
         if(isAnimating == true)             {
 
-            buttonOpenCloseObject           .rotate(radians(1));
-            buttonRotationCounterInt        ++;
+            if      (isButtonOpenBoolean    == true)  { buttonOpenCloseObject.rotate(radians(1));  }
+            else if (isButtonOpenBoolean    == false) { buttonOpenCloseObject.rotate(-radians(1)); }
 
-            println                         (buttonRotationCounterInt);
+            buttonRotationCounterInt        ++;
 
             if(buttonRotationCounterInt     >= 45){
 
-                buttonRotationCounterInt    = 0;
-                isAnimating                 = false;
+                buttonRotationCounterInt        =  0;
+                if      (isButtonOpenBoolean    == true)  { isButtonOpenBoolean = false; }
+                else if (isButtonOpenBoolean    == false) { isButtonOpenBoolean = true; }
+                isAnimating                     =  false;
 
             }
 
@@ -108,6 +110,7 @@ public class ButtonOpenClose{
     } 
 
 };
+
 
 
 
