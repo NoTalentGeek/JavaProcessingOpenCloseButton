@@ -3,8 +3,9 @@ This button will be used to open a panel made using
     P5 user interface.*/
 public class ButtonOpenClose{
 
-    boolean isButtonOpenBoolean         = true;
     boolean isAnimating                 = false;
+    boolean isButtonOpenBoolean         = true;
+    boolean isFunctionTriggerBoolean    = false;
     int     buttonRotationCounterInt    = 0;
     int     buttonSizeInt               = -1;   /*The size of this button.*/
     int     buttonXInt                  = -1;   /*The x position of this button.*/
@@ -68,6 +69,8 @@ public class ButtonOpenClose{
     /*A function to draw the combined shape.*/
     void DrawVoid                               (int _buttonXInt, int _buttonYInt){
 
+        if(isFunctionTriggerBoolean == true)    { isFunctionTriggerBoolean = false; }
+
         buttonXInt                              = _buttonXInt + (buttonSizeInt/2);
         buttonYInt                              = _buttonYInt + (buttonSizeInt/2);
         shape                                   (buttonOpenCloseObject, buttonXInt, buttonYInt);
@@ -85,6 +88,7 @@ public class ButtonOpenClose{
                 if      (isButtonOpenBoolean    == true)  { isButtonOpenBoolean = false; }
                 else if (isButtonOpenBoolean    == false) { isButtonOpenBoolean = true;  }
                 isAnimating                     =  false;
+                isFunctionTriggerBoolean        =  true;
 
             }
 
@@ -110,6 +114,7 @@ public class ButtonOpenClose{
     } 
 
 };
+
 
 
 
