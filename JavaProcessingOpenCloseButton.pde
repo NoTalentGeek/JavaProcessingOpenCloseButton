@@ -13,8 +13,8 @@ void draw                           (){
     background                      (0);
     buttonOpenCloseTestObject       .DrawVoid((width/2), (height/2));
 
-    if      (buttonOpenCloseTestObject.isFunctionTriggerBoolean == true && buttonOpenCloseTestObject.isButtonOpenBoolean == true) { TestButtonOpenVoid();  }
-    else if (buttonOpenCloseTestObject.isFunctionTriggerBoolean == true && buttonOpenCloseTestObject.isButtonOpenBoolean == false){ TestButtonCloseVoid(); }
+    if      (buttonOpenCloseTestObject.isFunctionTriggerBoolean == true && buttonOpenCloseTestObject.isButtonOpenBoolean == true) { TestButtonCloseVoid(); }
+    else if (buttonOpenCloseTestObject.isFunctionTriggerBoolean == true && buttonOpenCloseTestObject.isButtonOpenBoolean == false){ TestButtonOpenVoid();  }
 
 }
 
