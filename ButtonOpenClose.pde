@@ -66,24 +66,24 @@ public class ButtonOpenClose{
     }
 
     /*A function to draw the combined shape.*/
-    void DrawVoid                           (int _buttonXInt, int _buttonYInt){
+    void DrawVoid                               (int _buttonXInt, int _buttonYInt){
 
-        buttonXInt                          = _buttonXInt + (buttonSizeInt/2);
-        buttonYInt                          = _buttonYInt + (buttonSizeInt/2);
-        shape                               (buttonOpenCloseObject, buttonXInt, buttonYInt);
+        buttonXInt                              = _buttonXInt + (buttonSizeInt/2);
+        buttonYInt                              = _buttonYInt + (buttonSizeInt/2);
+        shape                                   (buttonOpenCloseObject, buttonXInt, buttonYInt);
 
-        if(isAnimating == true)             {
+        if(isAnimating == true)                 {
 
-            if      (isButtonOpenBoolean    == true)  { buttonOpenCloseObject.rotate(radians(1));  }
-            else if (isButtonOpenBoolean    == false) { buttonOpenCloseObject.rotate(-radians(1)); }
+            if      (isButtonOpenBoolean        == true)  { buttonOpenCloseObject.rotate(radians(1));  }
+            else if (isButtonOpenBoolean        == false) { buttonOpenCloseObject.rotate(-radians(1)); }
 
-            buttonRotationCounterInt        ++;
+            buttonRotationCounterInt            ++;
 
-            if(buttonRotationCounterInt     >= 45){
+            if(buttonRotationCounterInt         >= 45){
 
                 buttonRotationCounterInt        =  0;
                 if      (isButtonOpenBoolean    == true)  { isButtonOpenBoolean = false; }
-                else if (isButtonOpenBoolean    == false) { isButtonOpenBoolean = true; }
+                else if (isButtonOpenBoolean    == false) { isButtonOpenBoolean = true;  }
                 isAnimating                     =  false;
 
             }
