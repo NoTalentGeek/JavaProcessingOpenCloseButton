@@ -19,8 +19,8 @@ public class ButtonOpenClose{
     ButtonOpenClose                     (int _buttonSizeInt){
 
         buttonSizeInt                   = _buttonSizeInt;
-        int originXInt                  = -(buttonSizeInt/2);       /*This button size is adjusted by substracting a half of button size.*/
-        int originYInt                  = -(buttonSizeInt/2);       /*This button size is adjusted by substracting a half of button size.*/
+        int originXInt                  = -(buttonSizeInt/2);       /*This button origin point is adjusted by substracting a half of button size.*/
+        int originYInt                  = -(buttonSizeInt/2);       /*This button origin point is adjusted by substracting a half of button size.*/
 
         shapeMode                       (CENTER);                   /*Set this button origin point mode as center.*/
 
@@ -71,24 +71,25 @@ public class ButtonOpenClose{
 
         if(isFunctionTriggerBoolean == true)    { isFunctionTriggerBoolean = false; }
 
-        buttonXInt                              = _buttonXInt + (buttonSizeInt/2);
-        buttonYInt                              = _buttonYInt + (buttonSizeInt/2);
-        shape                                   (buttonOpenCloseObject, buttonXInt, buttonYInt);
+        buttonXInt                              = _buttonXInt + (buttonSizeInt/2);                  /*Determine the position of this button axis with additional (buttonSizeInt/2) to fix the position resulted from shapeMode(CENTER).*/
+        buttonYInt                              = _buttonYInt + (buttonSizeInt/2);                  /*Determine the position of this button axis with additional (buttonSizeInt/2) to fix the position resulted from shapeMode(CENTER).*/
+        shape                                   (buttonOpenCloseObject, buttonXInt, buttonYInt);    /*Draw the main shape with additional last two parameters are the position on screen.*/
 
         if(isAnimating == true)                 {
 
-            if      (isButtonOpenBoolean        == true)  { buttonOpenCloseObject.rotate(radians(1));  }
-            else if (isButtonOpenBoolean        == false) { buttonOpenCloseObject.rotate(-radians(1)); }
+            if      (isButtonOpenBoolean        == true)  { buttonOpenCloseObject.rotate(radians(1));  }    /*This button animation based on the current state of this button.*/
+            else if (isButtonOpenBoolean        == false) { buttonOpenCloseObject.rotate(-radians(1)); }    /*This button animation based on the current state of this button.*/
 
-            buttonRotationCounterInt            ++;
+            buttonRotationCounterInt            ++;                                                         /*The animation is 45 degrees rotation clock wise or anti - clock wise depending on button state.*/
 
+            /*If the animation is finished.*/
             if(buttonRotationCounterInt         >= 45){
 
-                buttonRotationCounterInt        =  0;
-                if      (isButtonOpenBoolean    == true)  { isButtonOpenBoolean = false; }
-                else if (isButtonOpenBoolean    == false) { isButtonOpenBoolean = true;  }
-                isAnimating                     =  false;
-                isFunctionTriggerBoolean        =  true;
+                buttonRotationCounterInt        =  0;                                       /*Reset the animation counter, so that next time the counter start counting from 0 degree.*/
+                if      (isButtonOpenBoolean    == true)  { isButtonOpenBoolean = false; }  /*Change button state, if button is open then change the state to close.*/
+                else if (isButtonOpenBoolean    == false) { isButtonOpenBoolean = true;  }  /*Change button state, if button is close then change the state to open.*/
+                isAnimating                     =  false;                                   /*The animation trigger boolean.*/
+                isFunctionTriggerBoolean        =  true;                                    /*The function trigger boolean. The function will only happened one tick after state change.*/
 
             }
 
@@ -96,12 +97,18 @@ public class ButtonOpenClose{
 
     }
 
+    /*A function that will return boolean whether or not mouse pointer is above
+        this button or not.*/
     boolean MouseOverBoolean            (){
 
+        /*Local variable to hold the boolean value.
+        This variable will return true if the mouse pointer is above this button.
+        Will return false if the mouse pointer is everywhere else but above the mouse pointer.*/
         boolean hoverBoolean            = false;
 
         if(
 
+            /*Setting up boundaries of which this button is belong.*/
             mouseX > (buttonXInt - (buttonSizeInt/2) - (buttonSizeInt/2)) &&
             mouseX < (buttonXInt - (buttonSizeInt/2) + (buttonSizeInt/2)) &&
             mouseY > (buttonYInt - (buttonSizeInt/2) - (buttonSizeInt/2)) &&
@@ -109,6 +116,7 @@ public class ButtonOpenClose{
 
         ){ hoverBoolean                 = true; }
 
+        /*Return the boolean.*/
         return  hoverBoolean;
 
     } 
